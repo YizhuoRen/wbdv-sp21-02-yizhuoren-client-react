@@ -20,7 +20,9 @@ export const createCourse = (course) =>
       headers: {'content-type': 'application/json'}}).then(response => response.json())
 
 
-export const findCourseById = (id) => {}
+export const findCourseById = (id) => fetch(`${URL}/${id}`).then(response => response.json())
+
+
 export const updateCourse = (id, course) =>
     fetch(`${URL}/${id}`, {
       method:'put',
