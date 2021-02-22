@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import CourseTable from "./course-table/course-table";
-import CourseGrid from "./course-grid";
+import CourseGrid from "./course-grid/course-grid";
 import CourseEditor from "./course-editor/course-editor";
 import {Route} from "react-router-dom";
 import courseService from "../services/course-service";
@@ -8,18 +8,27 @@ import courseService from "../services/course-service";
 
 class CourseManager extends React.Component {
   state = {
-    courses: []
+    courses: [],
+    addingCourseTitle: ''
+  }
+
+  setAddingNewCourseTitle(value) {
+    this.setState(
+        {addingCourseTitle: value}
+    )
   }
 
   componentDidMount = () => courseService.findAllCourses().then(courses => this.setState({courses}))
 
+  findCourseById = () => courseService.findCourseById().then(course => course)
 
-  addCourse = ()=> {
+  addCourse= () => {
     const course = {
-      title: 'new title',
-      owner: 'new owner',
-      lastModified: 'new modified time'
+      title: this.state.addingCourseTitle,
+      owner: 'me',
+      lastModified: '01/01/2021'
     }
+    this.setAddingNewCourseTitle('');
     courseService.createCourse(course).then(course => this.setState((prevState) => ({
      ...prevState,
      courses: [
@@ -49,8 +58,9 @@ class CourseManager extends React.Component {
        })
    ))
 
-
  }
+
+
 
 
   render() {
@@ -61,14 +71,22 @@ class CourseManager extends React.Component {
             <div className="col-1" id="hamburger">
               <i className="fas fa-bars fa-2x"></i>
             </div>
-            <div className="col-3 d-none d-md-block" id="name">
+            <div className="col-3 d-none d-lg-block yz-name">
               Course Manager
             </div>
+            <div className="col-1 yz-space-taker"></div>
             <div className="col-6">
-              <input type="text" className="form-control"
-                     placeholder="New Course Title" id="input1"/>
+              <input type="text" className="form-control input1" onChange={(event) => this.setAddingNewCourseTitle(event.target.value)}
+                     value={this.state.addingCourseTitle} placeholder="New Course Title" />
             </div>
             <div className="col-1" id="plus-icon1">
+              <i onClick={this.addCourse}
+                 className="fas fa-plus fa-2x"></i>
+            </div>
+          </div>
+          <div className="row" id="iconFix">
+            <div className="col-11"></div>
+            <div className="col-1">
               <i onClick={this.addCourse} className="fas fa-plus fa-2x"></i>
             </div>
           </div>
@@ -80,18 +98,25 @@ class CourseManager extends React.Component {
             <div className="col-1" id="hamburger">
               <i className="fas fa-bars fa-2x"></i>
             </div>
-            <div className="col-3 d-none d-md-block" id="name">
+            <div className="col-3 d-none d-lg-block yz-name">
               Course Manager
             </div>
+            <div className="col-1 yz-space-taker"></div>
             <div className="col-6">
-              <input type="text" className="form-control"
-                     placeholder="New Course Title" id="input1"/>
+              <input type="text" className="form-control input1" onChange={(event) => this.setAddingNewCourseTitle(event.target.value)}
+                     value={this.state.addingCourseTitle} placeholder="New Course Title"/>
             </div>
             <div className="col-1" id="plus-icon1">
               <i onClick={this.addCourse} className="fas fa-plus fa-2x"></i>
             </div>
           </div>
-          <CourseGrid courses={this.state.courses} deleteCourse={this.deleteCourse}/>
+          <div className="row" id="iconFix">
+            <div className="col-11"></div>
+            <div className="col-1">
+              <i onClick={this.addCourse} className="fas fa-plus fa-2x"></i>
+            </div>
+          </div>
+          <CourseGrid courses={this.state.courses} updateCourse={this.updateCourse} deleteCourse={this.deleteCourse}/>
         </Route>
 
         <Route path={'/courses/editor'} render={(props) => <CourseEditor {...props}/>}>
