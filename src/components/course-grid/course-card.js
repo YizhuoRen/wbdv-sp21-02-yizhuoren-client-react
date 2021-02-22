@@ -17,10 +17,11 @@ const CourseCard = ({course, deleteCourse, updateCourse}) => {
   }
 
   return (
-  <div className='col-3 yz-card'>
-    <div className="card" style={{width: '15rem'}}>
+  <div className='col-xl-2 col-lg-3 col-md-4 col-sm-6 col-xs-12 yz-card'>
+    <div className="card">
       {editing && <i onClick={() => saveTitle()} className='fas fa-check fa-2x yz-card-check-icon'></i>}
-      {editing && <i onClick={() => {setEditing(false); setNewCourseTitle(course.title)}} className="fas fa-times fa-2x yz-card-edit-cancel-icon"></i>}
+      {editing && <i onClick={() => {setEditing(false); deleteCourse(course)}} className="fas fa-times fa-2x yz-card-delete-icon"></i>}
+      {/*{editing && <i onClick={() => {setEditing(false); setNewCourseTitle(course.title)}} className="fas fa-times fa-2x yz-card-edit-cancel-icon"></i>}*/}
       <img src="https://icons.getbootstrap.com/assets/img/icons-hero@2x.png"
            className="card-img-top" alt="..."/>
 
@@ -31,9 +32,9 @@ const CourseCard = ({course, deleteCourse, updateCourse}) => {
           title and make up the bulk of the card's content.</p>
         <Link to="/courses/editor"
               className="btn btn-primary">{course.title}</Link>
-        <i onClick={() => deleteCourse(course)} className='fas fa-trash'></i>
+        {/*<i onClick={() => deleteCourse(course)} className='fas fa-trash'></i>*/}
         <div id="yz-card-edit-icon">
-          {!editing && <i onClick={() => {setEditing(true)}} className='fas fa-edit'></i>}
+          {!editing && <i onClick={() => {setEditing(true); setNewCourseTitle(course.title)}} className='fas fa-edit'></i>}
         </div>
       </div>
     </div>
