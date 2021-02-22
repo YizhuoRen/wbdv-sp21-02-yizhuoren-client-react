@@ -9,7 +9,7 @@ const CourseEditor = ({history}) =>
     <Link to='/courses/table'>
       <i className='fas fa-arrow-left float-left'></i>
     </Link>
-    <i onClick={()=>history.goBack()}  className='fas fa-times float-right'></i>
+    <i onClick={()=>history.goBack()}  className='fas fa-times float-right yz-exit-editor-icon'></i>
   </h1>
   <div className="row">
     <div className="col-4">
