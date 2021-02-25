@@ -3,11 +3,11 @@ import {Link} from "react-router-dom";
 
 
 const CourseEditor = ({history}) =>
-<div className="container">
+<div className="container yz-editor-container">
   <h1>
     Course Editor
     <Link to='/courses/table'>
-      <i className='fas fa-arrow-left float-left'></i>
+      {/*<i className='fas fa-arrow-left float-left yz_course-table'></i>*/}
     </Link>
     <i onClick={()=>history.goBack()}  className='fas fa-times float-right yz-exit-editor-icon'></i>
   </h1>

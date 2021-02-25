@@ -29,6 +29,7 @@ const CourseRow = ({lastModified, title, owner, deleteCourse, course, updateCour
             <td className='yz-row-icons'>
               {!editing && <i onClick={() => {setEditing(true); setNewTitle(course.title)}} className='fas fa-edit yz-row-edit'></i>}
               {editing && <i onClick={() => saveTitle()} className='fas fa-check yz-row-check'></i>}
+              {editing && <span>&nbsp;&nbsp;</span>}
               {editing && <i onClick={()=> {setEditing(false); deleteCourse(course)}} className="fas fa-times yz-row-delete"></i>}
             </td>
           </tr>)

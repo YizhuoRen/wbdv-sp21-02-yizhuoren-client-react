@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import CourseTable from "./course-table/course-table";
 import CourseGrid from "./course-grid/course-grid";
 import CourseEditor from "./course-editor/course-editor";
-import {Route} from "react-router-dom";
+import {Link, Route} from "react-router-dom";
 import courseService from "../services/course-service";
 
 
@@ -60,13 +60,9 @@ class CourseManager extends React.Component {
 
  }
 
-
-
-
   render() {
     return (
       <div>
-        <Route path={'/courses/table'}>
           <div className="row yz-sticky-nav-bar">
             <div className="col-1" id="hamburger">
               <i className="fas fa-bars fa-2x"></i>
@@ -83,6 +79,9 @@ class CourseManager extends React.Component {
               <i onClick={this.addCourse}
                  className="fas fa-plus fa-2x"></i>
             </div>
+            <Link to="/">
+              <i className="fas fa-2x fa-home float-right yz-home-icon"></i>
+            </Link>
           </div>
           <div className="row" id="iconFix">
             <div className="col-11"></div>
@@ -90,32 +89,32 @@ class CourseManager extends React.Component {
               <i onClick={this.addCourse} className="fas fa-plus fa-2x"></i>
             </div>
           </div>
+        <Route path={'/courses/table'}>
           <CourseTable courses={this.state.courses} updateCourse={this.updateCourse} deleteCourse={this.deleteCourse}/>
         </Route>
-
         <Route path={'/courses/grid'}>
-          <div className="row yz-sticky-nav-bar">
-            <div className="col-1" id="hamburger">
-              <i className="fas fa-bars fa-2x"></i>
-            </div>
-            <div className="col-3 d-none d-lg-block yz-name">
-              Course Manager
-            </div>
-            <div className="col-1 yz-space-taker"></div>
-            <div className="col-6">
-              <input type="text" className="form-control input1" onChange={(event) => this.setAddingNewCourseTitle(event.target.value)}
-                     value={this.state.addingCourseTitle} placeholder="New Course Title"/>
-            </div>
-            <div className="col-1" id="plus-icon1">
-              <i onClick={this.addCourse} className="fas fa-plus fa-2x"></i>
-            </div>
-          </div>
-          <div className="row" id="iconFix">
-            <div className="col-11"></div>
-            <div className="col-1">
-              <i onClick={this.addCourse} className="fas fa-plus fa-2x"></i>
-            </div>
-          </div>
+          {/*<div className="row yz-sticky-nav-bar">*/}
+          {/*  <div className="col-1" id="hamburger">*/}
+          {/*    <i className="fas fa-bars fa-2x"></i>*/}
+          {/*  </div>*/}
+          {/*  <div className="col-3 d-none d-lg-block yz-name">*/}
+          {/*    Course Manager*/}
+          {/*  </div>*/}
+          {/*  <div className="col-1 yz-space-taker"></div>*/}
+          {/*  <div className="col-6">*/}
+          {/*    <input type="text" className="form-control input1" onChange={(event) => this.setAddingNewCourseTitle(event.target.value)}*/}
+          {/*           value={this.state.addingCourseTitle} placeholder="New Course Title"/>*/}
+          {/*  </div>*/}
+          {/*  <div className="col-1" id="plus-icon1">*/}
+          {/*    <i onClick={this.addCourse} className="fas fa-plus fa-2x"></i>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
+          {/*<div className="row" id="iconFix">*/}
+          {/*  <div className="col-11"></div>*/}
+          {/*  <div className="col-1">*/}
+          {/*    <i onClick={this.addCourse} className="fas fa-plus fa-2x"></i>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
           <CourseGrid courses={this.state.courses} updateCourse={this.updateCourse} deleteCourse={this.deleteCourse}/>
         </Route>
 

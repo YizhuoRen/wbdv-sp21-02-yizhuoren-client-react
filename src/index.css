@@ -21,9 +21,14 @@ code {
 }
 
 
-.yz-card {
+.yz-card-div {
   padding-bottom: 20px;
 }
+
+.yz-card {
+  position: relative;
+}
+
 
 #yz-card-edit-icon {
   text-align: right;
@@ -32,12 +37,14 @@ code {
 .yz-card-check-icon {
   position: absolute;
   color: green;
-  margin-left: 5em;
+  font-size: 28px;
+  right: 30px;
 }
 .yz-card-delete-icon {
   position: absolute;
   color: red;
-  margin-left: 6em;
+  font-size: 28px;
+  right: 10px;
 }
 
 .yz-table-title {
@@ -74,7 +81,7 @@ code {
 
 .fa-plus {
   color: #fb8500;
-  position: float-right;
+
 }
 
 #iconFix {
@@ -128,6 +135,10 @@ tr > td:nth-of-type(1) {
   padding-left: 4rem;
 }
 
+.yz-home-icon {
+  color: #fb8500;
+}
+
 .fa-trash-alt {
   color: #ffb703;
 }
@@ -138,12 +149,12 @@ tr > td:nth-of-type(1) {
 
 .yz-row-delete{
   color: red;
-  /*font-size: 25px;*/
+  font-size: 22px;
 
 }
 
 .yz-row-check {
-  /*font-size: 25px;*/
+  font-size: 22px;
 
 }
 
@@ -152,7 +163,7 @@ tr > td:nth-of-type(1) {
 }
 
 .yz-exit-editor-icon {
-  color: lightcoral;
+  color: red;
 }
 
 #yz-extra-title1 {
@@ -179,9 +190,17 @@ tr > td:nth-of-type(1) {
   text-align: center;
 }
 
+.yz-editor-container {
+  padding-top: 80px;
+}
+
 @media screen and (min-width: 1198px) {
   .yz-space-taker {
     display: none;
+  }
+
+  .yz-card-input {
+    width: 8em;
   }
 
   tr > td:nth-of-type(1) {
@@ -300,6 +319,7 @@ tr > td:nth-of-type(1) {
   #title1 {
     padding-left: 60px;
   }
+
   .container1 {
     max-width: 100%;
   }
