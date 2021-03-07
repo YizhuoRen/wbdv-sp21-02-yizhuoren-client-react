@@ -1,21 +1,38 @@
 import React from "react"
+import CounterDisplay from "./counter-display";
+import CounterUp from "./counter-up";
+import CounterDown from "./counter-down";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+
+
 
 const initialState = {
-      counter: 234
+      count: 234
 }
 
-const reducer = (state, action) => {
-  switch(action.title) {
-    case("up"):
-    case("down"):
+const reducer = (state = initialState, action) => {
+  switch(action.type) {
+    case "up":  return {
+      count: state.count + 1
+    }
+    case "down": return {
+      count: state.count - 1
+    }
+    default: return state
   }
 }
 
-class  CounterRedux extends React.Component {
+const store = createStore(reducer)
 
-  render () {
-    return (
-        <h1> Counter: </h1>
-    )
-  }
-}
+const  CounterRedux = () =>
+ <Provider store={store}>
+    <div>
+       <CounterDisplay/>
+       <CounterUp/>
+       <CounterDown/>
+    </div>
+ </Provider>
+
+
+export default CounterRedux

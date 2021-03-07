@@ -2,10 +2,6 @@ const URL='https://wbdv-generic-server.herokuapp.com/api/001021545/courses'
 
 
 
-  // createCourse(course) {
-  //   fetch(URL).then(courses =>)
-  // }
-
 export const findAllCourses = () =>
     fetch(URL).then(response => response.json())
 

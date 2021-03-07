@@ -16,7 +16,7 @@ const CourseRow = ({lastModified, title, owner, deleteCourse, course, updateCour
   }
   return (<tr>
             <td>{!editing &&
-                  <Link to='/courses/editor'>
+                  <Link to={`/courses/table/edit/${course._id}`}>
                     <i className = "far fa-file-alt" > </i>
                     {title}
                   </Link>}

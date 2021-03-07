@@ -31,7 +31,7 @@ const CourseCard = ({course, deleteCourse, updateCourse}) => {
         {editing && <input type="text" className='yz-card-input' onChange={(event) => setNewCourseTitle(event.target.value)} value={newCourseTitle}/>}
         <p className="card-text">Some quick example text to build on the card
           title and make up the bulk of the card's content.</p>
-        <Link to="/courses/editor"
+        <Link to={`/courses/grid/edit/${course._id}`}
               className="btn btn-primary">{course.title}</Link>
         <div id="yz-card-edit-icon">
           {!editing && <i onClick={() => {setEditing(true); setNewCourseTitle(course.title)}} className='fas fa-edit'></i>}
