@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link, useParams} from "react-router-dom";
 import moduleReducer from "../../reducers/modules-reducer";
 import {combineReducers, createStore} from "redux";
@@ -20,6 +20,9 @@ const store = createStore(reducer)
 
 const CourseEditor = ({history}) => {
     const {layout, courseId, moduleId} = useParams();
+    const [courseTitle, setCourseTitle] = useState('');
+    useEffect(async () => {await courseService.findCourseById(courseId).then(course =>
+        setCourseTitle(course.title))}, [courseId])
     return (
 <Provider store={store}>
   <div className="container yz-editor-container">
@@ -27,7 +30,7 @@ const CourseEditor = ({history}) => {
       <Link to={`/courses/${layout}`}>
         <i className='fas fa-times yz-exit-editor-icon'></i>
       </Link>
-      Course Editor
+      {courseTitle}
       {/*<Link to='/courses/table'>*/}
         {/*<i className='fas fa-arrow-left float-left yz_course-table'></i>*/}
       {/*</Link>*/}

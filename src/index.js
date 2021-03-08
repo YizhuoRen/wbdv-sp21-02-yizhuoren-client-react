@@ -5,8 +5,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import CounterReact from "./components/counter/counter-react/counter-react";
-import CounterRedux from "./components/counter/counter-redux/counter-redux";
+
 
 ReactDOM.render(
   <App/>,
