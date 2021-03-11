@@ -188,7 +188,7 @@ tr > td:nth-of-type(1) {
 }
 
 .list-group-item .yz-editable-item-input {
-  font-size: 23px;
+  font-size: 20px;
 }
 
 .yz-exit-editor-icon {
@@ -225,6 +225,9 @@ tr > td:nth-of-type(1) {
 
 .list-group-item.list-group-item-primary.active a {
   color: white;
+}
+.nav-item .yz-editable-item-link {
+  font-size: 18px;
 }
 
 @media screen and (min-width: 1198px) {

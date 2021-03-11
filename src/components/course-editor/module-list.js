@@ -6,18 +6,24 @@ import moduleService from "../../services/module-service";
 import lessonService from "../../services/lesson-service";
 
 
-const ModuleList = ({modules=[], createModule, deleteModule, updateModule, findModulesForCourse, editingModule}) => {
+const ModuleList = ({modules=[], createModule, deleteModule, updateModule, findModulesForCourse}) => {
   const {layout,courseId, moduleId} = useParams();
   useEffect(() => {findModulesForCourse(courseId)}, [])
+  const showActive = (moduleId) => {}
   return (
   <ul className="list-group" id="leftSideList">
     {modules.map(module =>
-        <li className={`list-group-item list-group-item-primary ${module._id === moduleId? 'active':''}`} key={module._id}>
-          <EditableItem to={`/courses/${layout}/edit/${courseId}/modules/${module._id}`}
-                        deleteItem={deleteModule}
-                        item={module}
-                        updateItem={updateModule}/>
-        </li>)}
+            <li className={`list-group-item list-group-item-primary ${module._id === moduleId? 'active':''}`} key={module._id}>
+              <EditableItem to={`/courses/${layout}/edit/${courseId}/modules/${module._id}`}
+                            deleteItem={deleteModule}
+                            item={module}
+                            updateItem={updateModule}
+                            type="module"
+                            moduleId={moduleId}
+                            showActive = {showActive}
+              />
+          </li>
+        )}
     <li className="list-group-item list-group-item-primary">
       <i onClick={() => createModule(courseId)} className="fas fa-plus fa-2x"></i>
     </li>

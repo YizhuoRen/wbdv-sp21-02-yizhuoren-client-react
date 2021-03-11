@@ -15,8 +15,9 @@ const LessonTabs = ({findLessonsForModule, updateLesson, createLesson, deleteLes
     {lessons.map(lesson =>
         <li className="nav-item" key={lesson._id}>
           <EditableItem to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`} item={lesson} updateItem={updateLesson}
-                        deleteItem={deleteLesson} active={lesson._id === lessonId}/>
-        </li>)}
+                        deleteItem={deleteLesson} active={lesson._id === lessonId} type="lesson"/>
+        </li>
+     )}
     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
     <i onClick={() => createLesson(moduleId)} className="fas fa-plus fa-2x"></i>
   </ul>)

@@ -13,7 +13,7 @@ const TopicPills = ({findTopicsForLesson, createTopic, updateTopic, deleteTopic,
           {topics.map(topic =>
               <li className="nav-item" key={topic._id}>
                   <EditableItem to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}
-                                item={topic} updateItem={updateTopic} deleteItem={deleteTopic} active={topic._id === topicId}/>
+                                item={topic} updateItem={updateTopic} deleteItem={deleteTopic} active={topic._id === topicId} type="topic"/>
               </li>
           )}
           <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
