@@ -158,13 +158,39 @@ tr > td:nth-of-type(1) {
 
 }
 
+.yz-editable-item-link {
+  display: inline-block;
+  font-size: 23px;
+}
+
+.yz-editable-item-edit {
+  display: inline-block;
+  padding-top: 0.8em;
+}
+
+.yz-editable-item-input {
+  font-size: 1em;
+}
+
+.yz-editable-item-delete {
+  font-size: 18px;
+  padding-top: 16px;
+}
+
+.yz-editable-item-check {
+  font-size: 18px;
+  padding-top: 16px;
+}
+
 .yz-row-edit {
   /*font-size: 25px;*/
 }
 
 .yz-exit-editor-icon {
-  color: mediumpurple;
+  color: #fb8500;
 }
+
+
 
 #yz-extra-title1 {
   display: none;

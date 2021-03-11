@@ -63,6 +63,7 @@ class CourseManager extends React.Component {
   render() {
     return (
       <div>
+        <Route path={['/courses', '/courses/table', "/courses/grid"]} exact={true}>
           <div className="row yz-sticky-nav-bar">
             <div className="col-1" id="hamburger">
               <i className="fas fa-bars fa-2x"></i>
@@ -89,6 +90,7 @@ class CourseManager extends React.Component {
               <i onClick={this.addCourse} className="fas fa-plus fa-2x"></i>
             </div>
           </div>
+          </Route>
         <Route path={'/courses/table'} exact={true}>
           <CourseTable courses={this.state.courses} updateCourse={this.updateCourse} deleteCourse={this.deleteCourse}/>
         </Route>

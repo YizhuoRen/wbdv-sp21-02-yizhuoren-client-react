@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import EditableItem from "../editable-item";
 import {useParams} from 'react-router-dom';
 import moduleService from "../../services/module-service";
-
+import lessonService from "../../services/lesson-service";
 
 
 const ModuleList = ({modules=[], createModule, deleteModule, updateModule, findModulesForCourse}) => {
@@ -12,12 +12,11 @@ const ModuleList = ({modules=[], createModule, deleteModule, updateModule, findM
   return (
   <ul className="list-group" id="leftSideList">
     {modules.map(module =>
-        <li className={`list-group-item list-group-item-primary ${module._id === moduleId ? 'active':''}`}>
+        <li className={`list-group-item list-group-item-primary ${module._id === moduleId ? 'active':''}`} key={module._id}>
           <EditableItem to={`/courses/${layout}/edit/${courseId}/modules/${module._id}`}
                         deleteItem={deleteModule}
                         item={module}
                         updateItem={updateModule}/>
-          <i className="far fa-trash-alt float-right"></i>
         </li>)}
     <li className="list-group-item list-group-item-primary">
       <i onClick={() => createModule(courseId)} className="fas fa-plus fa-2x"></i>
@@ -42,8 +41,12 @@ const dtpm = (dispatch) => {
     updateModule: (module) => moduleService.updateModule(module._id, module).then(status =>
     dispatch({type: "UPDATE_MODULE", module: module})),
 
-    findModulesForCourse: (courseId) => moduleService.findModulesForCourse(courseId).then(modules =>
-        dispatch({type:"FIND_MODULES_BY_COURSE", modules: modules}))
+    findModulesForCourse: (courseId) => {
+      dispatch({type: "FIND_LESSONS_FOR_MODULE", lessons: []});
+      dispatch({type: "FIND_TOPICS_FOR_LESSON", topics: []});
+      moduleService.findModulesForCourse(courseId).then(modules =>
+          dispatch({type: "FIND_MODULES_BY_COURSE", modules: modules}))
+    }
   }
 }
 

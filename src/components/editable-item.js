@@ -20,18 +20,20 @@ const EditableItem = (
       <>
         {!editing &&
           <>
-            <Link className={`nav-link ${active ? 'active':''}`} aria-current="page" to={to}>
+            <Link className={`nav-link ${active ? 'active':''} yz-editable-item-link`} aria-current="page" to={to}>
             {item.title}
             </Link>
-            <i onClick={() => setEditing(true)} className='fas fa-edit'></i>
+            <i onClick={() => setEditing(true)} className='fas fa-edit float-right yz-editable-item-edit'></i>
           </>
         }
         {editing &&
         <>
           <input type="text" onChange={event => setCachedItem({...cachedItem, title: event.target.value})}
-                 value={cachedItem.title}/>
-          <i onClick={() => setCheck()} className='fas fa-check'></i>
-          <i onClick={() => deleteItem(item)} className='fas fa-times'></i>
+                 value={cachedItem.title} className="yz-editable-item-input"/>
+          <i onClick={() => setCheck()} className='fas fa-check yz-editable-item-check float-right'></i>
+          <span>&nbsp;&nbsp;&nbsp;</span>
+          <i onClick={() => {setEditing(false); deleteItem(item)}} className='fas fa-times yz-editable-item-delete float-right'></i>
+          <i></i>
         </>}
       </>
   )

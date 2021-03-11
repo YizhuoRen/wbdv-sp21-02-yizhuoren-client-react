@@ -30,6 +30,7 @@ const CourseEditor = ({history}) => {
       <Link to={`/courses/${layout}`}>
         <i className='fas fa-times yz-exit-editor-icon'></i>
       </Link>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
       {courseTitle}
       {/*<Link to='/courses/table'>*/}
         {/*<i className='fas fa-arrow-left float-left yz_course-table'></i>*/}
