@@ -6,13 +6,13 @@ import moduleService from "../../services/module-service";
 import lessonService from "../../services/lesson-service";
 
 
-const ModuleList = ({modules=[], createModule, deleteModule, updateModule, findModulesForCourse}) => {
+const ModuleList = ({modules=[], createModule, deleteModule, updateModule, findModulesForCourse, editingModule}) => {
   const {layout,courseId, moduleId} = useParams();
   useEffect(() => {findModulesForCourse(courseId)}, [])
   return (
   <ul className="list-group" id="leftSideList">
     {modules.map(module =>
-        <li className={`list-group-item list-group-item-primary ${module._id === moduleId ? 'active':''}`} key={module._id}>
+        <li className={`list-group-item list-group-item-primary ${module._id === moduleId? 'active':''}`} key={module._id}>
           <EditableItem to={`/courses/${layout}/edit/${courseId}/modules/${module._id}`}
                         deleteItem={deleteModule}
                         item={module}

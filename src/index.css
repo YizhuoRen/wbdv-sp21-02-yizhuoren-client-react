@@ -178,6 +178,7 @@ tr > td:nth-of-type(1) {
 }
 
 .yz-editable-item-check {
+  margin-left: 0.4em;
   font-size: 18px;
   padding-top: 16px;
 }
@@ -186,11 +187,13 @@ tr > td:nth-of-type(1) {
   /*font-size: 25px;*/
 }
 
+.list-group-item .yz-editable-item-input {
+  font-size: 23px;
+}
+
 .yz-exit-editor-icon {
   color: #fb8500;
 }
-
-
 
 #yz-extra-title1 {
   display: none;
