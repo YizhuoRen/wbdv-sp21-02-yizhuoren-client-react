@@ -22,18 +22,18 @@ const widgetReducer = (state = initialState, action) => {
         widgets: [...state.widgets,
           action.widget]
       }
-    // case "UPDATE_TOPIC":
-    //   return {
-    //     topics: state.topics.map(topic => {
-    //       if (topic._id === action.topic._id) {return action.topic} else {return topic}
-    //     })
-    //   }
-    // case "DELETE_TOPIC":
-    //   return {
-    //     topics: state.topics.filter(topic => {
-    //       if (topic._id ===action.topic._id) {return false} else {return true}
-    //     })
-    //   }
+    case "UPDATE_WIDGET":
+      return {
+        widgets: state.widgets.map(widget => {
+          if (widget.id === action.widget.id) {return action.widget} else {return widget}
+        })
+      }
+    case "DELETE_WIDGET":
+      return {
+        widgets: state.widgets.filter(widget => {
+          if (widget.id === action.widgetId) {return false} else {return true}
+        })
+      }
 
     default: return state
   }

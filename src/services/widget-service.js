@@ -17,20 +17,22 @@ export const createWidget = (tid, widget) =>
       headers: {'content-type':'application/json'}
     }).then(response => response.json())
 
-// export const updateTopic = (topicId, topic) =>
-//     fetch(`${URL}/${topicId}`, {
-//       method: "PUT",
-//       body: JSON.stringify(topic),
-//       headers: {'content-type':'application/json'}
-//     }).then(response => response.json())
-//
-// export const deleteTopic = (topicId) =>
-//     fetch(`${URL}/${topicId}`,{
-//       method: "DELETE"
-//     }).then(response => response.json())
+export const updateWidget = (wid, widget) =>
+    fetch(`http://localhost:8080/api/widgets/${wid}`, {
+      method: "PUT",
+      body: JSON.stringify(widget),
+      headers: {'content-type':'application/json'}
+    }).then(response => response.json())
+
+export const deleteWidget = (wid) =>
+    fetch(`http://localhost:8080/api/widgets/${wid}`,{
+      method: "DELETE"
+    }).then(response => response.json())
 
 export default {
   findAllWidgets,
   findWidgetsForTopic,
-  createWidget
+  createWidget,
+  deleteWidget,
+  updateWidget
 }
