@@ -6,10 +6,9 @@ import ParagraphWidget from "./paragraph-widget";
 import {useParams} from "react-router-dom";
 
 const WidgetList = ({findAllWidgets, findWidgetsForTopic, createWidget, deleteWidget, updateWidget, widgets = []}) => {
-  const {lessonId, topicId} = useParams();
-  useEffect(() => {if (topicId !== 'undefined' && typeof topicId !== 'undefined')
-  {findWidgetsForTopic(topicId)}}
-  ,[topicId]);
+  const {topicId} = useParams();
+  useEffect(() => {findWidgetsForTopic(topicId)},[topicId]);
+
   const [editingWidget, setEditingWidget] = useState({});
   return(
       <div>
@@ -22,13 +21,20 @@ const WidgetList = ({findAllWidgets, findWidgetsForTopic, createWidget, deleteWi
               <>
                 <i onClick={() => {updateWidget(widget.id, editingWidget); setEditingWidget({})}} className="fas fa-check fa-2x float-right"></i>
                 <i onClick={() => deleteWidget(widget.id)} className="fas fa-trash fa-2x float-right"></i>
+                <select onChange={event => {updateWidget(widget.id, {...widget, type: event.target.value});
+                    setEditingWidget({...editingWidget, type: event.target.value})}} value={widget.type} className="form-control">
+                  <option value={"HEADING"}>Heading</option>
+                  <option value={"PARAGRAPH"}>Paragraph</option>
+                </select>
               </>
             }
             { editingWidget.id !== widget.id &&
               <i onClick={() => setEditingWidget(widget)} className="fas fa-cog fa-2x float-right"></i>
             }
-            {widget.type === "HEADING" && <HeadingWidget  setWidget={setEditingWidget} editingWidget={editingWidget}  editing={editingWidget.id === widget.id} widget={widget}/>}
-            {widget.type === "PARAGRAPH" && <ParagraphWidget setWidget={setEditingWidget} editingWidget={editingWidget}  editing={editingWidget.id === widget.id} widget={widget}/>}
+            <>
+            {widget.type==="HEADING" && <HeadingWidget  setEditingWidget={setEditingWidget} editingWidget={editingWidget}  editing={editingWidget.id === widget.id} widget={widget}/>}
+            {widget.type==="PARAGRAPH" && <ParagraphWidget setEditingWidget={setEditingWidget} editingWidget={editingWidget}  editing={editingWidget.id === widget.id} widget={widget}/>}
+            </>
           </li>)}
         </ul>
       </div>
@@ -58,4 +64,4 @@ const dtpm = (dispatch) => {
   }
 }
 
-export default connect(stpm, dtpm)(WidgetList);
+export default connect(stpm, dtpm)(WidgetList)

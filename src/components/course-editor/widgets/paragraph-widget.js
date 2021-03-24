@@ -1,12 +1,12 @@
 import React from 'react'
 
 
-const ParagraphWidget = ({widget, editing}) => {
+const ParagraphWidget = ({widget, editing, setEditingWidget, editingWidget}) => {
   return(
       <>
-        { editing &&
+        {editing &&
           <>
-            <textarea value={widget.text} className="form-control">
+            <textarea onChange={event=>setEditingWidget({...editingWidget, text: event.target.value})} value={editingWidget.text} className="form-control">
             </textarea>
           </>
         }
