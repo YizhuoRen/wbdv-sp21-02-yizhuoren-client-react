@@ -12,8 +12,7 @@ const WidgetList = ({findAllWidgets, findWidgetsForTopic, createWidget, deleteWi
   const [editingWidget, setEditingWidget] = useState({});
   return(
       <div>
-        <i onClick={() => createWidget(topicId)} className="fas fa-plus fa-2x float-right"></i>
-        <h2>Widget List({widgets.length})</h2>
+        <i onClick={() => createWidget(topicId)} className="fas fa-plus fa-2x float-right"/><br/><br/>
         <ul className="list-group">
           {widgets.map(widget =>
           <li key={widget.id} className="list-group-item">

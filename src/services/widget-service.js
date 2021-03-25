@@ -1,31 +1,31 @@
-const URL = "http://localhost:8080/api/widgets"
+const WIDGET_URL = process.env.REACT_APP_MY_WIDGET_URL
 
 export const findAllWidgets = () =>
-    fetch(URL).then(response => response.json())
+    fetch(WIDGET_URL).then(response => response.json())
 
 
 export const findWidgetsForTopic = (topicId) =>
-    fetch(`http://localhost:8080/api/topics/${topicId}/widgets`).then(response => response.json())
+    fetch(`${WIDGET_URL}/topics/${topicId}/widgets`).then(response => response.json())
 //
 // export const findTopicsForLesson = (lessonId) =>
 //     fetch(`${URL}/${lessonId}/topics`).then(response => response.json())
 //
 export const createWidget = (tid, widget) =>
-    fetch(`http://localhost:8080/api/topics/${tid}/widgets`, {
+    fetch(`${WIDGET_URL}/topics/${tid}/widgets`, {
       method: "POST",
       body: JSON.stringify(widget),
       headers: {'content-type':'application/json'}
     }).then(response => response.json())
 
 export const updateWidget = (wid, widget) =>
-    fetch(`http://localhost:8080/api/widgets/${wid}`, {
+    fetch(`${WIDGET_URL}/widgets/${wid}`, {
       method: "PUT",
       body: JSON.stringify(widget),
       headers: {'content-type':'application/json'}
     }).then(response => response.json())
 
 export const deleteWidget = (wid) =>
-    fetch(`http://localhost:8080/api/widgets/${wid}`,{
+    fetch(`${WIDGET_URL}/widgets/${wid}`,{
       method: "DELETE"
     }).then(response => response.json())
 
