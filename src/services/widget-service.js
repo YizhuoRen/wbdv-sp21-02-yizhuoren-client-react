@@ -1,3 +1,4 @@
+require('dotenv').config()
 const WIDGET_URL = process.env.REACT_APP_MY_WIDGET_URL
 
 export const findAllWidgets = () =>
