@@ -6,7 +6,8 @@ const ParagraphWidget = ({widget, editing, setEditingWidget, editingWidget}) => 
       <>
         {editing &&
           <>
-            <textarea onChange={event=>setEditingWidget({...editingWidget, text: event.target.value})} value={editingWidget.text} className="form-control">
+            <textarea onChange={event=>setEditingWidget({...editingWidget, text: event.target.value})}
+                      value={editingWidget.text} className="form-control">
             </textarea>
           </>
         }

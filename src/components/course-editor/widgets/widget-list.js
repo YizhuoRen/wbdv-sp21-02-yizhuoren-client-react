@@ -4,8 +4,11 @@ import widgetService from "../../../services/widget-service";
 import HeadingWidget from "./heading-widget";
 import ParagraphWidget from "./paragraph-widget";
 import {useParams} from "react-router-dom";
+import ListWidget from "./list-widget";
+import ImageWidget from "./image-widget";
 
-const WidgetList = ({findAllWidgets, findWidgetsForTopic, createWidget, deleteWidget, updateWidget, widgets = []}) => {
+const WidgetList = ({findAllWidgets, findWidgetsForTopic, createWidget,
+  deleteWidget, updateWidget, widgets = []}) => {
   const {topicId} = useParams();
   useEffect(() => {findWidgetsForTopic(topicId)},[topicId]);
 
@@ -18,21 +21,42 @@ const WidgetList = ({findAllWidgets, findWidgetsForTopic, createWidget, deleteWi
           <li key={widget.id} className="list-group-item">
             { editingWidget.id === widget.id &&
               <>
-                <i onClick={() => {updateWidget(widget.id, editingWidget); setEditingWidget({})}} className="fas fa-check fa-2x float-right"></i>
-                <i onClick={() => deleteWidget(widget.id)} className="fas fa-trash fa-2x float-right"></i>
+                <i onClick={() => {
+                      updateWidget(widget.id, editingWidget);
+                      setEditingWidget({})
+                    }} className="fas fa-check fa-2x float-right"/>
+                <i onClick={() => deleteWidget(
+                      widget.id)} className="fas fa-trash fa-2x float-right"/>
                 <select onChange={event => {updateWidget(widget.id, {...widget, type: event.target.value});
-                    setEditingWidget({...editingWidget, type: event.target.value})}} value={widget.type} className="form-control">
+                    setEditingWidget({...editingWidget, type: event.target.value})}}
+                        value={widget.type} className="form-control">
                   <option value={"HEADING"}>Heading</option>
                   <option value={"PARAGRAPH"}>Paragraph</option>
+                  <option value={"LIST"}>List</option>
+                  <option value={"IMAGE"}>Image</option>
                 </select>
               </>
             }
             { editingWidget.id !== widget.id &&
-              <i onClick={() => setEditingWidget(widget)} className="fas fa-cog fa-2x float-right"></i>
+              <i onClick={() => setEditingWidget(widget)} className="fas fa-cog fa-2x float-right"/>
             }
             <>
-            {widget.type==="HEADING" && <HeadingWidget  setEditingWidget={setEditingWidget} editingWidget={editingWidget}  editing={editingWidget.id === widget.id} widget={widget}/>}
-            {widget.type==="PARAGRAPH" && <ParagraphWidget setEditingWidget={setEditingWidget} editingWidget={editingWidget}  editing={editingWidget.id === widget.id} widget={widget}/>}
+            {widget.type==="HEADING" && <HeadingWidget  setEditingWidget={setEditingWidget}
+                                                        editingWidget={editingWidget}
+                                                        editing={editingWidget.id === widget.id}
+                                                        widget={widget}/>}
+            {widget.type==="PARAGRAPH" && <ParagraphWidget setEditingWidget={setEditingWidget}
+                                                           editingWidget={editingWidget}
+                                                           editing={editingWidget.id === widget.id}
+                                                           widget={widget}/>}
+            {widget.type==="LIST" && <ListWidget setEditingWidget={setEditingWidget}
+                                                 editingWidget={editingWidget}
+                                                 editing={editingWidget.id === widget.id}
+                                                 widget={widget}/>}
+            {widget.type==="IMAGE" && <ImageWidget setEditingWidget={setEditingWidget}
+                                                   editingWidget={editingWidget}
+                                                   editing={editingWidget.id === widget.id}
+                                                   widget={widget}/>}
             </>
           </li>)}
         </ul>
