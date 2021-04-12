@@ -63,7 +63,9 @@ class CourseManager extends React.Component {
   render() {
     return (
       <div>
-        <Route path={['/courses', '/courses/table', "/courses/grid"]} exact={true}>
+        <Route path={["/courses",
+                      "/courses/table",
+                      "/courses/grid"]} exact={true}>
           <div className="row yz-sticky-nav-bar">
             <div className="col-1" id="hamburger">
               <i className="fas fa-bars fa-2x"></i>

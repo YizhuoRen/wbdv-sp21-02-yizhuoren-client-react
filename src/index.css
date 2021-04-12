@@ -230,6 +230,19 @@ tr > td:nth-of-type(1) {
   font-size: 18px;
 }
 
+.yz-questions-list {
+  width: 50%;
+}
+
+.yz-check-icon-quiz {
+  color: green;
+}
+
+.yz-times-icon-quiz {
+  color: red;
+}
+
+
 @media screen and (min-width: 1198px) {
   .yz-space-taker {
     display: none;

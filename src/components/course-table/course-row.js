@@ -26,6 +26,11 @@ const CourseRow = ({lastModified, title, owner, deleteCourse, course, updateCour
             </td>
             <td>{owner}</td>
             <td>{lastModified}</td>
+            <td>
+              <Link to={`/courses/${course._id}/quizzes`}>
+                Quizzes
+              </Link>
+            </td>
             <td className='yz-row-icons'>
               {!editing && <i onClick={() => {setEditing(true); setNewTitle(course.title)}} className='fas fa-edit yz-row-edit'></i>}
               {editing && <i onClick={() => saveTitle()} className='fas fa-check yz-row-check'></i>}
