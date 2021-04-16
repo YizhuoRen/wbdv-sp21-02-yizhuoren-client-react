@@ -13,6 +13,10 @@ const Quiz = () => {
       setQuestions(questions)
     );
    quizService.findQuizById(quizId).then((quiz) => setQuiz(quiz))},  [])
+  const submitQuiz = (quizId, questions) => {
+        alert("new quiz attempt submitted")
+    quizService.submitQuiz(quizId, questions)
+  }
 
   return (
     <div className="yz-questions-list">
@@ -30,6 +34,8 @@ const Quiz = () => {
             }
         )}
       </ul>
+      <button onClick={() => {submitQuiz(quizId, questions)
+      }} type="button" className="btn btn-success">Submit</button>
     </div>
   )
 }

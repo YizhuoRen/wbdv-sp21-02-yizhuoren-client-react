@@ -17,7 +17,7 @@ const TrueFalseQuestion = ({question}) => {
                     ${yourAnswer!==question.correct && yourAnswer === "true" ? "list-group-item-danger" : ""}
                     ${yourAnswer!== "" && yourAnswer!==question.correct && question.correct === "true" ? "list-group-item-success" : ""}
                     `}>
-            <label><input onClick={()=>{setYourChoice("true"); setYourAnswer("")}} type='radio' name={question._id}/>True</label>
+            <label><input onClick={()=>{setYourChoice("true"); question.answer = "true"; setYourAnswer("")}} type='radio' name={question._id}/>True</label>
             {yourAnswer===question.correct && question.correct === "true" &&
             <i className="fas fa-check float-right"></i>}
             {yourAnswer!==question.correct && yourAnswer === "true" &&
@@ -30,7 +30,7 @@ const TrueFalseQuestion = ({question}) => {
                     ${yourAnswer!==question.correct && yourAnswer === "false" ? "list-group-item-danger" : ""}
                     ${yourAnswer!== "" && yourAnswer!==question.correct && question.correct === "false" ? "list-group-item-success" : ""}
                     `}>
-            <label><input onClick={()=>{setYourChoice("false"); setYourAnswer("")}} type='radio' name={question._id}/>False</label>
+            <label><input onClick={()=>{setYourChoice("false");question.answer = "false";setYourAnswer("")}} type='radio' name={question._id}/>False</label>
             {yourAnswer===question.correct && question.correct === "false" &&
             <i className="fas fa-check float-right"></i>}
             {yourAnswer!==question.correct && yourAnswer === "false" &&

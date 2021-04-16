@@ -234,6 +234,11 @@ tr > td:nth-of-type(1) {
   width: 50%;
 }
 
+.yz-attempts-list {
+  width: 50%;
+  padding-top: 50px;
+}
+
 .yz-check-icon-quiz {
   color: green;
 }

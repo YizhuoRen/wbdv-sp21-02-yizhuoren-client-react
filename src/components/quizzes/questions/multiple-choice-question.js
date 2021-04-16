@@ -3,6 +3,7 @@ import React, {useState} from "react";
 const MultipleChoiceQuestion = ({question}) => {
   const [yourChoice, setYourChoice] =useState("");
   const [yourAnswer, setYourAnswer] =useState("");
+
   return(
       <div>
           <h5>{question.question}
@@ -22,7 +23,7 @@ const MultipleChoiceQuestion = ({question}) => {
                     `}>
                     <label>
                       <input onClick={() => {
-                        setYourChoice(choice); setYourAnswer("")
+                        setYourChoice(choice); question.answer = choice; setYourAnswer("")
                       }} type="radio" name={question._id}/>{choice}
                     </label>
                     {yourAnswer===question.correct && choice===question.correct &&
