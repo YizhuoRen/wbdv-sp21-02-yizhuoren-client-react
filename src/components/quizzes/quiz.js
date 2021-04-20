@@ -14,7 +14,6 @@ const Quiz = () => {
     );
    quizService.findQuizById(quizId).then((quiz) => setQuiz(quiz))},  [])
   const submitQuiz = (quizId, questions) => {
-        alert("new quiz attempt submitted")
     quizService.submitQuiz(quizId, questions)
   }
 

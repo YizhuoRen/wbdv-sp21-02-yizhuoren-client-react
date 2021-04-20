@@ -19,7 +19,10 @@ const submitQuiz = (quizId, questions) => {
       'content-type': 'application/json'
     }
   }).then(response => response.json())
-  .then(result => console.log(result))
+  .then(result => {
+    console.log(result);
+    alert("Attempt submitted, your score:" + result.score)
+  })
 }
 
 const findAttemptsForQuiz = (quizId) => {
