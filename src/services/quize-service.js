@@ -1,4 +1,5 @@
-const QUIZZES_URL = 'http://localhost:4000/api/quizzes'
+require('dotenv').config()
+const QUIZZES_URL = process.env.REACT_APP_MY_QUIZ_URL
 
 
 const findAllQuizzes = () => {
